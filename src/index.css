@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+/* Ant Design modal footer top margin remove */
+.ant-modal-footer {
+  margin-top: 0 !important;
+}
+
+/* Ant Design menu option */
+.ant-menu-item:hover {
+  background: linear-gradient(90deg, #0090B9 0%, #3FC7EE 100%) !important;
+  color: #fff !important;
+  border-radius: 8px; /* Optional: smooth corner */
+}
+
+.ant-menu-item-selected {
+  background: linear-gradient(90deg, #0090B9 0%, #3FC7EE 100%) !important;
+  color: #fff !important;
+  font-weight: bold; /* Optional: Make text bold */
+  border-radius: 8px; /* Optional: smooth corner */
+}
+
+.ant-menu .ant-menu-item .ant-menu-item-icon + span {
+  transition: none !important;
+}
+
+.ant-menu-light .ant-menu-submenu-selected > .ant-menu-submenu-title {
+  background: linear-gradient(90deg, #0090B9 0%, #3FC7EE 100%) !important;
+  color: white !important;
+}
+
+.ant-menu .ant-menu-title-content {
+  transition: none !important;
+}
+
+/* Ant Design Badge */
+.ant-badge .ant-badge-count {
+  background: #0090B9 !important;
+  color: white !important;
+}
+
+/* Jodit Editor Height */
+.jodit-workplace {
+  height: 550px !important;
+}
