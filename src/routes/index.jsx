@@ -20,12 +20,13 @@ import SubCategory from "../Pages/Dashboard/SubCategory";
 import AdminProfile from "../Pages/Dashboard/AdminProfile/AdminProfile";
 import RetailerTable from "../Pages/Dashboard/Retailer";
 import WholesealerTable from "../Pages/Dashboard/Wholesealer";
+import PrivateRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    // element: <ProtectedRoute><Main /></ProtectedRoute> ,
-    element: <Main />,
+    element: <PrivateRoute><Main /></PrivateRoute> ,
+    // element: <Main />,
     children: [
       {
         path: "/",
