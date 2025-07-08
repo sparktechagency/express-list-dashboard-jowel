@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://75.119.138.163:4173/api/v1",
+    baseUrl: "http://75.119.138.163:5006/api/v1",
     prepareHeaders: (headers) => {
       headers.set("ngrok-skip-browser-warning", "true");
       const token = localStorage.getItem("token");
@@ -13,8 +13,8 @@ export const api = createApi({
       return headers;
     },
   }),
+  tagTypes: ['User', 'Admin', 'Profile'],
   endpoints: () => ({}),
 });
-export const imageUrl = "http://75.119.138.163:4173";
 
-// http://75.119.138.163:4173/auth/login
+export const imageUrl = "http://75.119.138.163:5006";

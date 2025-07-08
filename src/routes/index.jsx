@@ -25,8 +25,7 @@ import PrivateRoute from "./ProtectedRoute";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <PrivateRoute><Main /></PrivateRoute> ,
-    // element: <Main />,
+    element: <PrivateRoute><Main /></PrivateRoute>,
     children: [
       {
         path: "/",

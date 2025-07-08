@@ -12,16 +12,24 @@ const Login = () => {
   const onFinish = async (values) => {
     try {
       const response = await login(values);
+      console.log("Login response:", response);
 
-      if (response.data && response?.data?.data.token) {
-        localStorage.setItem("token", response?.data?.data.token);
-        message.success("Login successful!");
-        navigate("/");
-        window.location.reload();
-      } else {
-        console.error("Token Missing in Response:", response?.error?.data);
-        message.error(response?.error?.data?.message || "Invalid credentials!");
+      // Check if response contains data with token, handling both possible structures
+      if (response.data) {
+        const token = response.data.token || response.data?.data?.token;
+        
+        if (token) {
+          localStorage.setItem("token", token);
+          message.success("Login successful!");
+          navigate("/");
+          window.location.reload();
+          return;
+        }
       }
+      
+      // If we reached here, no token was found
+      console.error("Token Missing in Response:", response);
+      message.error(response?.error?.data?.message || "Invalid credentials!");
     } catch (err) {
       console.error("Login Error:", err);
       message.error("Something went wrong. Please try again.");
