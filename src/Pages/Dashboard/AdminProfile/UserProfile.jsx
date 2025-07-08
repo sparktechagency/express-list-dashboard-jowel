@@ -8,6 +8,7 @@ import {
 } from "../../../redux/apiSlices/authSlice";
 import { imageUrl } from "../../../redux/api/baseApi";
 import Loading from "../../../components/common/Loading";
+import { getImageUrl } from "../../../components/common/imageUrl";
 
 // import { imageUrl } from "../../../redux/api/baseApi";
 
@@ -15,6 +16,7 @@ const UserProfile = () => {
   const [form] = Form.useForm();
   const { data: user,  } = useGetLoginuserQuery();
   const [updateProfile, {isLoading}] = useUpdateProfileMutation();
+  console.log(user)
 
   // Image state
   const [image, setImage] = useState(null);
@@ -30,9 +32,9 @@ const UserProfile = () => {
       });
 
       setImgURL(
-        user?.data?.profile?.startsWith("https")
-          ? user?.data?.profile
-          : `${imageUrl}${user?.data?.profile}`
+        user?.data?.image?.startsWith("https")
+          ? user?.data?.image
+          : `${imageUrl}${user?.data?.image}`
       );
     }
   }, [user, setImgURL, form]);
@@ -67,6 +69,7 @@ const UserProfile = () => {
     const file = e.target.files[0];
     console.log(file);
     if (file) {
+      // For local file preview we need to use URL.createObjectURL
       const imgUrl = URL.createObjectURL(file);
       setImgURL(imgUrl);
       setImage(file);
@@ -103,7 +106,7 @@ const UserProfile = () => {
               borderRadius: "100%",
               border: "1px solid #1D75F2",
               background: "white",
-              backgroundImage: `url(${imgURL})`,
+              backgroundImage: `url(${imgURL || getImageUrl(user?.data?.image)})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}

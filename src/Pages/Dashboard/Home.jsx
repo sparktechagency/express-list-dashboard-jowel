@@ -191,10 +191,10 @@ const Home = () => {
 
       {/* Subscription Section */}
       <div className="bg-white p-4 rounded-lg">
-        <h2 className="font-semibold mb-4">Subscription</h2>
+        <h2 className="font-semibold mb-2">Subscription</h2>
 
         {/* Bar Chart */}
-        <div className="mt-6" style={{ height: "200px" }}>
+        <div className="mt-" style={{ height: "220px" }}>
           <Bar data={data} options={options} />
         </div>
       </div>

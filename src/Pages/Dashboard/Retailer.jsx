@@ -50,7 +50,7 @@ const RetailerTable = () => {
     limit: pagination.pageSize,
     ...searchParams,
   });
-
+console.log(data)
   const [deleteRetailer] = useDeleteRetailerMutation();
   const retailersData = data?.data || [];
   const total = data?.pagination?.total || 0;

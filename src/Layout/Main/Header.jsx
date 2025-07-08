@@ -7,6 +7,7 @@ import { useUser } from "../../provider/User";
 import { Select } from "antd";
 import { countries } from "../../Translation/Countries"; // Assuming you have a list of countries
 import { useGetLoginuserQuery } from "../../redux/apiSlices/authSlice";
+import { getImageUrl } from "../../components/common/imageUrl";
 
 const Header = () => {
   // const { user } = useUser();
@@ -54,7 +55,7 @@ const Header = () => {
               width: 45,
               height: 45,
             }}
-            src={user?.image}
+            src={getImageUrl(user?.image)}
             alt="profile-pic"
             className="clip"
           />

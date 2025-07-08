@@ -80,7 +80,7 @@ const LineChart = ({wholesaler, retailer, wholesalerLoding}) => {
 
   if(wholesalerLoding) <Loading />
   return (
-    <div style={{ height: "300px" }}>
+    <div style={{ height: "250px" }}>
       <Line data={data} options={options} />
     </div>
   );
