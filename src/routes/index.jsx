@@ -21,6 +21,7 @@ import AdminProfile from "../Pages/Dashboard/AdminProfile/AdminProfile";
 import RetailerTable from "../Pages/Dashboard/Retailer";
 import WholesealerTable from "../Pages/Dashboard/Wholesealer";
 import PrivateRoute from "./ProtectedRoute";
+import InviteLinks from "../Pages/Dashboard/InviteLinks";
 
 const router = createBrowserRouter([
   {
@@ -74,8 +75,8 @@ const router = createBrowserRouter([
       },
      
       {
-        path: "/sub-category",
-        element: <SubCategory />,
+        path: "/invite-link",
+        element: <InviteLinks />,
       },
       {
         path: "/profile",

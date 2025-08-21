@@ -60,72 +60,72 @@ const Sidebar = () => {
     //   icon: <IoNotificationsOutline size={24} />,
     //   label: <Link to="/category">Push Notification</Link>,
     // },
-    // {
-    //   key: "/sub-category",
-    //   icon: <RiMoneyDollarBoxLine size={24} />,
-    //   label: <Link to="/sub-category">Billing</Link>,
-    // },
+    {
+      key: "/invite-link",
+      icon: <RiMoneyDollarBoxLine size={24} />,
+      label: <Link to="/invite-link">Invite Link</Link>,
+    },
     {
       key: "/events",
       icon: <BiLock size={24} />,
       label: <Link to="/events">Password</Link>,
     },
-    //   {
-    //     key: "subMenuSetting",
-    //     icon: <IoSettingsOutline size={24} />,
-    //     label: "Settings",
-    //     children: [
-    //       {
-    //         key: "/banner",
-    //         label: (
-    //           <Link to="/banner" className="text-white hover:text-white">
-    //             Banner
-    //           </Link>
-    //         ),
-    //       },
-    //       {
-    //         key: "/about-us",
-    //         label: (
-    //           <Link to="/about-us" className="text-white hover:text-white">
-    //             About Us
-    //           </Link>
-    //         ),
-    //       },
-    //       {
-    //         key: "/terms-and-conditions",
-    //         label: (
-    //           <Link
-    //             to="/terms-and-conditions"
-    //             className="text-white hover:text-white"
-    //           >
-    //             Terms And Condition
-    //           </Link>
-    //         ),
-    //       },
-    //       {
-    //         key: "/privacy-policy",
-    //         label: (
-    //           <Link
-    //             to="/privacy-policy"
-    //             className="text-white hover:text-white"
-    //           >
-    //             Privacy Policy
-    //           </Link>
-    //         ),
-    //       },
-    //       {
-    //         key: "/change-password",
-    //         label: (
-    //           <Link
-    //             to="/change-password"
-    //             className="text-white hover:text-white"
-    //           >
-    //             Change Password
-    //           </Link>
-    //         ),
-    //       },
-    //     ],
-    //   },
+      {
+        key: "subMenuSetting",
+        icon: <IoSettingsOutline size={24} />,
+        label: "Settings",
+        children: [
+          {
+            key: "/banner",
+            label: (
+              <Link to="/banner" className="text-white hover:text-white">
+                Banner
+              </Link>
+            ),
+          },
+          {
+            key: "/about-us",
+            label: (
+              <Link to="/about-us" className="text-white hover:text-white">
+                About Us
+              </Link>
+            ),
+          },
+          {
+            key: "/terms-and-conditions",
+            label: (
+              <Link
+                to="/terms-and-conditions"
+                className="text-white hover:text-white"
+              >
+                Terms And Condition
+              </Link>
+            ),
+          },
+          {
+            key: "/privacy-policy",
+            label: (
+              <Link
+                to="/privacy-policy"
+                className="text-white hover:text-white"
+              >
+                Privacy Policy
+              </Link>
+            ),
+          },
+          // {
+          //   key: "/change-password",
+          //   label: (
+          //     <Link
+          //       to="/change-password"
+          //       className="text-white hover:text-white"
+          //     >
+          //       Change Password
+          //     </Link>
+          //   ),
+          // },
+        ],
+      },
     {
       key: "/logout",
       icon: <IoIosLogOut size={24}  />,
