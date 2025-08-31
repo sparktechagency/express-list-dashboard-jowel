@@ -10,7 +10,7 @@ const categorySlice = api.injectEndpoints({
                     method: "POST",
                     body: categoryData,
                     headers:{
-                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 }
             }
@@ -22,7 +22,7 @@ const categorySlice = api.injectEndpoints({
                     method: "PATCH",
                     body: updatedData,
                     headers:{
-                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 }
             }
@@ -33,7 +33,7 @@ const categorySlice = api.injectEndpoints({
                     url: `/category/delete-category/${id}`,
                     method: "DELETE",
                     headers:{
-                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 }
             }
@@ -44,7 +44,7 @@ const categorySlice = api.injectEndpoints({
                     url: "/category/get-category",
                     method: "GET",
                     headers:{
-                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 }
             }

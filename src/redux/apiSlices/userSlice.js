@@ -11,7 +11,7 @@ const userSlice = api.injectEndpoints({
                     url: `/auth/get-all-user?${params.toString()}`,
                     method: "GET",
                     headers:{
-                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 }
             }

@@ -21,7 +21,7 @@ const bannerSlice = api.injectEndpoints({
                     url: `/banner/delete-banner/${id}`,
                     method: "DELETE",
                     headers:{
-                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 }
             }
@@ -32,7 +32,7 @@ const bannerSlice = api.injectEndpoints({
                     url: "/banner/get-banner",
                     method: "GET",
                     headers:{
-                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 }
             },
@@ -46,7 +46,7 @@ const bannerSlice = api.injectEndpoints({
                     url: `/banner/${id}`,
                     method: "PATCH",
                     headers:{
-                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 }
             }

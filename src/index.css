@@ -48,6 +48,25 @@
   color: white !important;
 }
 
+/* Submenu background color override */
+.ant-menu-dark .ant-menu-sub {
+  background: #3FC7EE !important;
+}
+
+.ant-menu-dark .ant-menu-submenu-popup {
+  background: #3FC7EE !important;
+}
+
+.ant-menu-dark .ant-menu-submenu-popup .ant-menu-item {
+  background: transparent !important;
+}
+
+.ant-menu-dark .ant-menu-submenu-popup .ant-menu-item:hover {
+  background: linear-gradient(90deg, #0090B9 0%, #3FC7EE 100%) !important;
+  color: #fff !important;
+  border-radius: 8px;
+}
+
 /* Jodit Editor Height */
 .jodit-workplace {
   height: 550px !important;

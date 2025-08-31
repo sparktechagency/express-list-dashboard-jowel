@@ -43,7 +43,7 @@ const Sidebar = () => {
     {
       key: "/users",
       icon: <HiMiniUsers size={24} />,
-      label: <Link to="/users">Subscribe</Link>,
+      label: <Link to="/users">Subscriber</Link>,
     },
     /* {
             key: "/subscription",
@@ -75,14 +75,14 @@ const Sidebar = () => {
         icon: <IoSettingsOutline size={24} />,
         label: "Settings",
         children: [
-          {
-            key: "/banner",
-            label: (
-              <Link to="/banner" className="text-white hover:text-white">
-                Banner
-              </Link>
-            ),
-          },
+          // {
+          //   key: "/banner",
+          //   label: (
+          //     <Link to="/banner" className="text-white hover:text-white">
+          //       Banner
+          //     </Link>
+          //   ),
+          // },
           {
             key: "/about-us",
             label: (

@@ -10,7 +10,7 @@ const eventSlice = api.injectEndpoints({
                     method: "POST",
                     body: eventData,
                     headers:{
-                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 }
             }
@@ -22,7 +22,7 @@ const eventSlice = api.injectEndpoints({
                     method: "PATCH",
                     body: updatedData,
                     headers:{
-                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 }
             }
@@ -33,7 +33,7 @@ const eventSlice = api.injectEndpoints({
                     url: `/event/delete-event/${id}`,
                     method: "DELETE",
                     headers:{
-                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 }
             }
@@ -44,7 +44,7 @@ const eventSlice = api.injectEndpoints({
                     url: "/event/get-event",
                     method: "GET",
                     headers:{
-                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 }
             }

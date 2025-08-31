@@ -24,7 +24,7 @@ const inviteLinkApi = api.injectEndpoints({
       query: ({id,data}) => {
         return {
           url: `/invite-link/update/${id}`,
-          method: "PUT",
+          method: "PATCH",
             body: data,
         };
       },

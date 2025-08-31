@@ -21,7 +21,7 @@ const privacyPolicySlice = api.injectEndpoints({
                     url: "/privacy/get-privacy",
                     method: "GET",
                     headers:{
-                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 }
             },
