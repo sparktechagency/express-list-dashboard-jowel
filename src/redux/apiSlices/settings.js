@@ -4,7 +4,7 @@ import { api } from "../api/baseApi";
 const contactUsApi = api.injectEndpoints({
 
   endpoints: (builder) => ({
-    crateContactUs: builder.mutation({
+    createContactUs: builder.mutation({
       query: (data) => {
         return {
           url: '/about-us-contact-us-terms-and-conditions/contactUs',
@@ -22,12 +22,11 @@ const contactUsApi = api.injectEndpoints({
       },
     }),
     updateContactUs: builder.mutation({
-
       query: ({id,data}) => {
         return {
-          url: `/about-us-contact-us-terms-and-conditions/contactUs`,
+          url: `/about-us-contact-us-terms-and-conditions/contactUs/${id}`,
           method: "PATCH",
-            body: data,
+          body: data,
         };
       },
     }),
@@ -37,6 +36,7 @@ const contactUsApi = api.injectEndpoints({
 
 export const { 
     useCrateContactUsMutation,
+     useCreateContactUsMutation,
     useGetContactUsQuery, 
     useUpdateContactUsMutation, 
 } = contactUsApi;

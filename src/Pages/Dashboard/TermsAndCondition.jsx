@@ -2,13 +2,14 @@ import React, { useState, useRef, useEffect } from "react";
 import JoditEditor from "jodit-react";
 // import GradientButton from "../../components/common/GradiantButton";
 import { Button, message, Modal } from "antd";
-import { useGetTermsQuery, useUpdateTermsMutation } from "../../redux/apiSlices/termsApi";
+import { useGetTermsQuery, useUpdateTermsMutation, useCreateTermsMutation } from '../../redux/apiSlices/termsApi';
 
 
 const TermsAndConditions = () => {
   const editor = useRef(null);
   const { data: termsResponse, isLoading: isLoadingSetting, isError } = useGetTermsQuery();
   const [updateTerms, { isLoading: isUpdating }] = useUpdateTermsMutation();
+  const [createTerms, { isLoading: isCreating }] = useCreateTermsMutation();
   const [termsContent, setTermsContent] = useState("");
   
   // Modal open state
@@ -42,30 +43,36 @@ const TermsAndConditions = () => {
       return;
     }
 
-    if (!termsData?._id) {
-      message.error("Terms ID not found. Please refresh the page.");
-      return;
-    }
-
     try {
-      const result = await updateTerms({ 
-        id: termsData._id,
-        data: {
+      let result;
+      
+      if (!termsData?._id) {
+        // Create new Terms if no data exists
+        result = await createTerms({
           body: termsContent,
           types: "termsAndConditions"
-        }
-      }).unwrap();
+        }).unwrap();
+      } else {
+        // Update existing Terms
+        result = await updateTerms({ 
+          id: termsData._id,
+          data: {
+            body: termsContent,
+            types: "termsAndConditions"
+          }
+        }).unwrap();
+      }
       
       if (result.success) {
-        message.success(result.message || "Terms and conditions updated successfully!");
+        message.success(result.message || "Terms saved successfully!");
         setIsModalOpen(false);
       } else {
-        message.error(result.message || "Failed to update Terms and conditions.");
+        message.error(result.message || "Failed to save Terms.");
       }
     } catch (error) {
-      const errorMessage = error?.data?.message || error?.message || "Failed to update Terms and conditions.";
+      const errorMessage = error?.data?.message || error?.message || "Failed to save Terms.";
       message.error(errorMessage);
-      console.error('Update error:', error);
+      console.error('Save error:', error);
     }
   };
 
@@ -114,9 +121,9 @@ const TermsAndConditions = () => {
             key="submit"
             onClick={handleOk}
             className="text-white bg-[#3FC7EE]"
-            disabled={isUpdating}
+            disabled={isUpdating || isCreating}
           >
-            {isUpdating ? "Updating..." : "Update Terms and conditions"}
+            {(isUpdating || isCreating) ? "Saving..." : (termsData?._id ? "Update Terms and conditions" : "Create Terms and conditions")}
           </Button>
         ]}
       >

@@ -75,14 +75,14 @@ const Sidebar = () => {
         icon: <IoSettingsOutline size={24} />,
         label: "Settings",
         children: [
-          // {
-          //   key: "/banner",
-          //   label: (
-          //     <Link to="/banner" className="text-white hover:text-white">
-          //       Banner
-          //     </Link>
-          //   ),
-          // },
+          {
+            key: "/contact-us",
+            label: (
+              <Link to="/contact-us" className="text-white hover:text-white">
+                Contact Us
+              </Link>
+            ),
+          },
           {
             key: "/about-us",
             label: (
@@ -103,16 +103,27 @@ const Sidebar = () => {
             ),
           },
           {
-            key: "/privacy-policy",
+            key: "/faq",
             label: (
               <Link
-                to="/privacy-policy"
+                to="/faq"
                 className="text-white hover:text-white"
               >
-                Privacy Policy
+                Faq
               </Link>
             ),
           },
+          // {
+          //   key: "/privacy-policy",
+          //   label: (
+          //     <Link
+          //       to="/privacy-policy"
+          //       className="text-white hover:text-white"
+          //     >
+          //       Privacy Policy
+          //     </Link>
+          //   ),
+          // },
           // {
           //   key: "/change-password",
           //   label: (

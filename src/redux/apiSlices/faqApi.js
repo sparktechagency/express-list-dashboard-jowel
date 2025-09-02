@@ -20,7 +20,7 @@ const faqApi = api.injectEndpoints({
 
       query: () => {
         return {
-          url: "/faq/create",
+          url: "/faq/all",
           method: "GET",
         };
       },
@@ -30,12 +30,22 @@ const faqApi = api.injectEndpoints({
 
       query: ({id,data}) => {
         return {
-          url: `/faq/create`,
+          url: `/faq/update/${id}`,
+
           method: "PATCH",
             body: data,
         };
       },
     }),
+
+    deleteFaq: builder.mutation({
+      query: (id) => ({
+        url: `/faq/delete/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Faq'],
+    }),
+
   
   }),
 });
@@ -44,6 +54,8 @@ export const {
     useCreateFaqMutation,
     useGetFaqQuery,
     useUpdateFaqMutation,
+    useDeleteFaqMutation,
+
 
 } = faqApi;
 

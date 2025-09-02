@@ -9,8 +9,8 @@ const InviteLinks = () => {
   const [updateInviteLink, { isLoading: isUpdating }] = useUpdateInviteLinksMutation();
   const [deleteInviteLink, { isLoading: isDeleting }] = useDeleteMutation();
   
-  // Fixed data handling - since data is an object, not an array
-  const inviteLinksData = inviteLinks?.data ? [inviteLinks.data] : [];
+  // Updated data handling - data is now an array
+  const inviteLinksData = inviteLinks?.data || [];
   console.log('Invite Links Data:', inviteLinksData);
 
   const [isModalOpen, setIsModalOpen] = useState(false);

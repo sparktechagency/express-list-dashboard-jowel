@@ -22,6 +22,8 @@ import RetailerTable from "../Pages/Dashboard/Retailer";
 import WholesealerTable from "../Pages/Dashboard/Wholesealer";
 import PrivateRoute from "./ProtectedRoute";
 import InviteLinks from "../Pages/Dashboard/InviteLinks";
+import ContactUs from "../Pages/Dashboard/ContactUs";
+import Faq from "../Pages/Dashboard/Faq";
 
 const router = createBrowserRouter([
   {
@@ -73,7 +75,14 @@ const router = createBrowserRouter([
         path: "/terms-and-conditions",
         element: <TermsAndConditions />,
       },
-     
+      {
+        path: "/contact-us",
+        element: <ContactUs />,
+      },
+      {
+        path: "/faq",
+        element: <Faq />,
+      },
       {
         path: "/invite-link",
         element: <InviteLinks />,

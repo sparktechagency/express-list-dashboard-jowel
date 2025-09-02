@@ -5,7 +5,7 @@ const aboutUsApi = api.injectEndpoints({
 
 
   endpoints: (builder) => ({
-    crateAboutUs: builder.mutation({
+    createAboutUs: builder.mutation({
       query: (data) => {
         return {
           url: '/about-us-contact-us-terms-and-conditions/aboutUs',
@@ -37,8 +37,7 @@ const aboutUsApi = api.injectEndpoints({
 });
 
 export const { 
-    useCrateAboutUsMutation,
+     useCreateAboutUsMutation,
     useGetAboutUsQuery, 
     useUpdateAboutUsMutation, 
-
 } = aboutUsApi;

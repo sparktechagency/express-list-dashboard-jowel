@@ -1,13 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import JoditEditor from 'jodit-react';
 import { Button, message, Modal } from 'antd';
-import { useGetAboutUsQuery, useUpdateAboutUsMutation } from '../../redux/apiSlices/aboutUsApi';
+import { useGetAboutUsQuery, useUpdateAboutUsMutation, useCreateAboutUsMutation } from '../../redux/apiSlices/aboutUsApi';
 // import { useGetAboutUsQuery, useUpdateAboutUsMutation } from "../../redux/apiSlices/aboutSlice";
 
 const AboutUs = () => {
   const editor = useRef(null);
   const { data: aboutUsResponse, isLoading: isLoadingSetting, isError } = useGetAboutUsQuery();
   const [updateAboutUs, { isLoading: isUpdating }] = useUpdateAboutUsMutation();
+  const [createAboutUs, { isLoading: isCreating }] = useCreateAboutUsMutation();
   const [aboutUsContent, setAboutUsContent] = useState("");
 
   
@@ -42,30 +43,36 @@ const AboutUs = () => {
       return;
     }
 
-    if (!aboutUsData?._id) {
-      message.error("About Us ID not found. Please refresh the page.");
-      return;
-    }
-
     try {
-      const result = await updateAboutUs({ 
-        id: aboutUsData._id,
-        data: {
+      let result;
+      
+      if (!aboutUsData?._id) {
+        // Create new About Us if no data exists
+        result = await createAboutUs({
           body: aboutUsContent,
           types: "aboutUs"
-        }
-      }).unwrap();
+        }).unwrap();
+      } else {
+        // Update existing About Us
+        result = await updateAboutUs({ 
+          id: aboutUsData._id,
+          data: {
+            body: aboutUsContent,
+            types: "aboutUs"
+          }
+        }).unwrap();
+      }
       
-      if (result.status) {
-        message.success(result.message || "About Us updated successfully!");
+      if (result.success) {
+        message.success(result.message || "About Us saved successfully!");
         setIsModalOpen(false);
       } else {
-        message.error(result.message || "Failed to update About Us.");
+        message.error(result.message || "Failed to save About Us.");
       }
     } catch (error) {
-      const errorMessage = error?.data?.message || error?.message || "Failed to update About Us.";
+      const errorMessage = error?.data?.message || error?.message || "Failed to save About Us.";
       message.error(errorMessage);
-      console.error('Update error:', error);
+      console.error('Save error:', error);
     }
   };
 
@@ -112,9 +119,9 @@ const AboutUs = () => {
             key="submit"
             onClick={handleOk}
             className="text-white bg-[#3FC7EE]"
-            disabled={isUpdating}
+            disabled={isUpdating || isCreating}
           >
-            {isUpdating ? "Updating..." : "Update About Us"}
+            {(isUpdating || isCreating) ? "Saving..." : (aboutUsData?._id ? "Update About Us" : "Create About Us")}
           </Button>
         ]}
       >
