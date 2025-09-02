@@ -10,6 +10,16 @@
   margin: 0;
 }
 
+body, html {
+  background-color: #F6F6F6;
+  height: 100%;
+  overflow: hidden;
+}
+
+#root {
+  height: 100vh;
+}
+
 /* Ant Design modal footer top margin remove */
 .ant-modal-footer {
   margin-top: 0 !important;

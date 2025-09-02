@@ -50,8 +50,10 @@ const TermsAndConditions = () => {
     try {
       const result = await updateTerms({ 
         id: termsData._id,
-        body: termsContent,
-        types: "termsAndConditions"
+        data: {
+          body: termsContent,
+          types: "termsAndConditions"
+        }
       }).unwrap();
       
       if (result.success) {
@@ -76,13 +78,14 @@ const TermsAndConditions = () => {
         <h2 className="text-xl font-bold">Terms and conditions</h2>
         <Button
           onClick={showModal}
-          className="h-10 text-white w-60 bg-secondary"
+          className="h-10 text-white w-60 bg-[#3FC7EE]"
         >
           Edit Terms and Conditions
         </Button>
       </div>
 
-      <div className="p-6 rounded-lg bg-primary">
+      <div className="p-6 rounded-lg bg-[#3FC7EE]">
+
         <div className="p-6 mt-6 bg-white border rounded-lg saved-content">
           <div
             dangerouslySetInnerHTML={{ __html: termsContent }}
@@ -110,7 +113,7 @@ const TermsAndConditions = () => {
 
             key="submit"
             onClick={handleOk}
-            className="text-white bg-secondary"
+            className="text-white bg-[#3FC7EE]"
             disabled={isUpdating}
           >
             {isUpdating ? "Updating..." : "Update Terms and conditions"}

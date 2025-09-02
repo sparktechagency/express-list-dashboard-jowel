@@ -20,8 +20,8 @@ const termsApi = api.injectEndpoints({
     }),
     
     updateTerms: builder.mutation({
-      query: (data) => ({
-        url: `/about-us-contact-us-terms-and-conditions/termsAndConditions`,
+      query: ({id, data}) => ({
+        url: `/about-us-contact-us-terms-and-conditions/termsAndConditions/${id}`,
         method: "PATCH",
         body: data,
       }),

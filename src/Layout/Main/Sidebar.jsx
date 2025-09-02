@@ -164,7 +164,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="mb-20 h-screen bg-[#3FC7EE] text-white">
+    <div className="h-screen bg-[#3FC7EE] text-white">
       <Link to={"/"} className="flex items-center justify-center py-4">
         <img src={image4} alt="logo" />
       </Link>

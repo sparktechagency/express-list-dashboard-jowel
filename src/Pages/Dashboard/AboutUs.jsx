@@ -1,45 +1,133 @@
-import React, { useState, useRef,  useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import JoditEditor from 'jodit-react';
-import { Button} from 'antd';
-import { useAboutUsQuery, useUpdateAboutUsMutation } from "../../redux/apiSlices/aboutSlice"
-import toast from 'react-hot-toast';
+import { Button, message, Modal } from 'antd';
+import { useGetAboutUsQuery, useUpdateAboutUsMutation } from '../../redux/apiSlices/aboutUsApi';
+// import { useGetAboutUsQuery, useUpdateAboutUsMutation } from "../../redux/apiSlices/aboutSlice";
 
 const AboutUs = () => {
-  const editor = useRef(null)
-  const [content, setContent] = useState('');
-  const {data: aboutUs, refetch} = useAboutUsQuery({});
-  const [updateAboutUs, {isLoading}] = useUpdateAboutUsMutation()
-
-
-  const aboutDataSave =async () => {
-
-    try {
-      await updateAboutUs({ id: aboutUs?._id, description: content}).unwrap().then(({status, message})=>{
-        if (status) {
-          toast.success(message);
-          refetch()
-        }
-      })
-    } catch (error) {
-      toast.error(error?.data?.message || "Something Wrong");
-    }
-  }
-
-
-  useEffect(()=>{
-    setContent(aboutUs?.description);
-  }, [aboutUs])
-
+  const editor = useRef(null);
+  const { data: aboutUsResponse, isLoading: isLoadingSetting, isError } = useGetAboutUsQuery();
+  const [updateAboutUs, { isLoading: isUpdating }] = useUpdateAboutUsMutation();
+  const [aboutUsContent, setAboutUsContent] = useState("");
 
   
+  // Modal open state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Extract about us data from response array
+  const aboutUsData = aboutUsResponse?.data?.find(item => item.types === 'aboutUs');
+
+  useEffect(() => {
+    if (aboutUsData?.body) {
+      setAboutUsContent(aboutUsData.body);
+    }
+  }, [aboutUsData]);
+
+  // Show modal handler
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  // Handle modal cancel
+  const handleCancel = () => {
+    // Reset content to original on cancel to discard changes
+    setAboutUsContent(aboutUsData?.body || "");
+    setIsModalOpen(false);
+  };
+
+  // Handle modal OK (save)
+  const handleOk = async () => {
+    if (!aboutUsContent || aboutUsContent.trim() === '') {
+      message.error("Content cannot be empty");
+      return;
+    }
+
+    if (!aboutUsData?._id) {
+      message.error("About Us ID not found. Please refresh the page.");
+      return;
+    }
+
+    try {
+      const result = await updateAboutUs({ 
+        id: aboutUsData._id,
+        data: {
+          body: aboutUsContent,
+          types: "aboutUs"
+        }
+      }).unwrap();
+      
+      if (result.status) {
+        message.success(result.message || "About Us updated successfully!");
+        setIsModalOpen(false);
+      } else {
+        message.error(result.message || "Failed to update About Us.");
+      }
+    } catch (error) {
+      const errorMessage = error?.data?.message || error?.message || "Failed to update About Us.";
+      message.error(errorMessage);
+      console.error('Update error:', error);
+    }
+  };
+
+  if (isLoadingSetting) return <p>Loading About Us...</p>;
+  if (isError) return <p>Failed to load About Us.</p>;
+
   return (
-    <div >
-      <JoditEditor
-        ref={editor}
-        value={content}
-          onChange={newContent => { setContent(newContent) }}
-      />
-      <Button onClick={aboutDataSave} block style={{ marginTop: "30px", backgroundColor: "#6C57EC", border:"none", color: "#fff", height: "40px" }}> {isLoading ? "Updating..." : "Update"} </Button>
+    <div>
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-xl font-bold">About Us</h2>
+        <Button
+          onClick={showModal}
+          className="h-10 text-white w-60 bg-[#3FC7EE]"
+        >
+          Edit About Us
+        </Button>
+      </div>
+
+      <div className="p-6 rounded-lg bg-[#3FC7EE]">
+        <div className="p-6 mt-6 bg-white border rounded-lg saved-content">
+          <div
+            dangerouslySetInnerHTML={{ __html: aboutUsContent }}
+            className="prose max-w-none"
+          />
+        </div>
+      </div>
+
+      <Modal
+        title="Update About Us"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        width="65%"
+        footer={[
+          <Button
+            key="cancel"
+            onClick={handleCancel}
+            className="py-5 mr-2 text-white bg-red-500"
+            disabled={isUpdating}
+          >
+            Cancel
+          </Button>,
+          <Button
+            key="submit"
+            onClick={handleOk}
+            className="text-white bg-[#3FC7EE]"
+            disabled={isUpdating}
+          >
+            {isUpdating ? "Updating..." : "Update About Us"}
+          </Button>
+        ]}
+      >
+        {isModalOpen && (
+          <div className="mb-6">
+            <JoditEditor
+              ref={editor}
+              value={aboutUsContent}
+              onChange={setAboutUsContent}
+            />
+          </div>
+        )}
+      </Modal>
     </div>
   );
 };

@@ -26,7 +26,7 @@ const aboutUsApi = api.injectEndpoints({
 
       query: ({id,data}) => {
         return {
-          url: `/about-us-contact-us-terms-and-conditions/aboutUs`,
+          url: `/about-us-contact-us-terms-and-conditions/aboutUs/${id}`,
           method: "PATCH",
             body: data,
         };
