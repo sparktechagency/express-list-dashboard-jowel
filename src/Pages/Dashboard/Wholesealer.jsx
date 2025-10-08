@@ -159,18 +159,19 @@ const WholesaleTable = () => {
       dataIndex: "name",
       render: (text) => <span>{text}</span>,
     },
+     {
+      title: "Email",
+      dataIndex: "email",
+    },
     {
       title: "Business Name",
       dataIndex: ["storeInformation", "businessName"],
     },
     {
-      title: "Status",
-      dataIndex: "role",
+      title: "Business Category",
+      dataIndex: ["storeInformation", "businessCategory"],
     },
-    {
-      title: "Email",
-      dataIndex: "email",
-    },
+   
     {
       title: "Phone",
       dataIndex: "phone",

@@ -47,13 +47,13 @@ const WholesalerFormModal = ({ isOpen, onClose, wholesaler }) => {
   ];
 
   // Helper function to get image URL
-  const getImageUrl = (url) => {
-    if (!url) return "";
-    if (url.startsWith("http") || url.startsWith("data:")) {
-      return url;
-    }
-    return `${"http://10.10.7.46:5006" || ""}${url}`;
-  };
+  // const getImageUrl = (url) => {
+  //   if (!url) return "";
+  //   if (url.startsWith("http") || url.startsWith("data:")) {
+  //     return url;
+  //   }
+  //   return `${"http://10.10.7.46:5006" || ""}${url}`;
+  // };
 
   useEffect(() => {
     if (isOpen) {
@@ -180,7 +180,13 @@ const WholesalerFormModal = ({ isOpen, onClose, wholesaler }) => {
     setImageUrl("");
     setImageChanged(true);
   };
-
+  const getImageUrl = (url) => {
+    if (!url) return "";
+    if (url.startsWith("http") || url.startsWith("data:")) {
+      return url;
+    }
+    return `${"http://75.119.138.163:5006" || ""}${url}`;
+  };
   return (
     <Modal
       title={isEditMode ? "Update Wholesaler" : "Add Wholesaler"}

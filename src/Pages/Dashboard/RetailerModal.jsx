@@ -56,7 +56,7 @@ const RetailerFormModal = ({ isOpen, onClose, retailer }) => {
     if (url.startsWith("http") || url.startsWith("data:")) {
       return url;
     }
-    return `${"http://10.10.7.46:5006" || ""}${url}`;
+    return `${"http://75.119.138.163:5006" || ""}${url}`;
   };
 
   useEffect(() => {

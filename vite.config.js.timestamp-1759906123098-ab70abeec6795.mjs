@@ -1,0 +1,15 @@
+// vite.config.js
+import react from "file:///J:/projects/express-list-dashboard-jowel/node_modules/@vitejs/plugin-react/dist/index.mjs";
+import { defineConfig } from "file:///J:/projects/express-list-dashboard-jowel/node_modules/vite/dist/node/index.js";
+var vite_config_default = defineConfig({
+  plugins: [react()],
+  server: {
+    // host: "75.119.138.163",
+    host: "10.10.7.48",
+    port: 3004
+  }
+});
+export {
+  vite_config_default as default
+};
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsidml0ZS5jb25maWcuanMiXSwKICAic291cmNlc0NvbnRlbnQiOiBbImNvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9kaXJuYW1lID0gXCJKOlxcXFxwcm9qZWN0c1xcXFxleHByZXNzLWxpc3QtZGFzaGJvYXJkLWpvd2VsXCI7Y29uc3QgX192aXRlX2luamVjdGVkX29yaWdpbmFsX2ZpbGVuYW1lID0gXCJKOlxcXFxwcm9qZWN0c1xcXFxleHByZXNzLWxpc3QtZGFzaGJvYXJkLWpvd2VsXFxcXHZpdGUuY29uZmlnLmpzXCI7Y29uc3QgX192aXRlX2luamVjdGVkX29yaWdpbmFsX2ltcG9ydF9tZXRhX3VybCA9IFwiZmlsZTovLy9KOi9wcm9qZWN0cy9leHByZXNzLWxpc3QtZGFzaGJvYXJkLWpvd2VsL3ZpdGUuY29uZmlnLmpzXCI7aW1wb3J0IHJlYWN0IGZyb20gXCJAdml0ZWpzL3BsdWdpbi1yZWFjdFwiO1xyXG5pbXBvcnQgeyBkZWZpbmVDb25maWcgfSBmcm9tIFwidml0ZVwiO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgZGVmaW5lQ29uZmlnKHtcclxuICBwbHVnaW5zOiBbcmVhY3QoKV0sXHJcbiAgc2VydmVyOiB7XHJcbiAgICAvLyBob3N0OiBcIjc1LjExOS4xMzguMTYzXCIsXHJcbiAgICBob3N0IDogXCIxMC4xMC43LjQ4XCIsXHJcbiAgICBwb3J0OiAzMDA0LFxyXG4gIH0sXHJcbn0pO1xyXG4iXSwKICAibWFwcGluZ3MiOiAiO0FBQWdULE9BQU8sV0FBVztBQUNsVSxTQUFTLG9CQUFvQjtBQUU3QixJQUFPLHNCQUFRLGFBQWE7QUFBQSxFQUMxQixTQUFTLENBQUMsTUFBTSxDQUFDO0FBQUEsRUFDakIsUUFBUTtBQUFBO0FBQUEsSUFFTixNQUFPO0FBQUEsSUFDUCxNQUFNO0FBQUEsRUFDUjtBQUNGLENBQUM7IiwKICAibmFtZXMiOiBbXQp9Cg==
